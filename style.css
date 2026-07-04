@@ -1,0 +1,129 @@
+/* ==========================================================================
+   1. DESIGN SYSTEM & TOKENS (:root)
+   ========================================================================== */
+:root {
+  /* 5-Color Palette */
+  --color-bg: #faf7ff;
+  --color-fg: #1a0b2e;
+  --color-muted: #6b5b7e;
+  --color-accent: #7c3aed;
+  --color-border: #e5e0ee;
+
+  /* 2 Fonts */
+  --font-sans: "Inter", system-ui, sans-serif;
+  --font-display: "Sora", sans-serif;
+
+  /* 4-Step Spacing Scale */
+  --space-1: 0.25rem;  /* 4px */
+  --space-2: 0.5rem;   /* 8px */
+  --space-4: 1rem;     /* 16px */
+  --space-8: 2rem;     /* 32px */
+}
+
+/* ==========================================================================
+   2. GLOBAL RESETS & BOX MODEL
+   ========================================================================== */
+*, *::before, *::after {
+  box-sizing: border-box; /* Includes padding/border in width calculation */
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-fg);
+  font-family: var(--font-sans);
+  line-height: 1.6;
+  padding: var(--space-8) var(--space-4);
+}
+
+/* ==========================================================================
+   3. TYPE SCALE (Typography)
+   ========================================================================== */
+h1, h2, h3 {
+  font-family: var(--font-display);
+  color: var(--color-fg);
+  margin-bottom: var(--space-4);
+}
+
+h1 { font-size: 2.5rem;   line-height: 1.2; }
+h2 { font-size: 1.75rem;  line-height: 1.3; }
+h3 { font-size: 1.25rem;  line-height: 1.4; }
+p  { font-size: 1rem;      margin-bottom: var(--space-4); }
+
+/* ==========================================================================
+   4. LAYOUT & CONTAINERS (No Flexbox/Grid)
+   ========================================================================== */
+header, main, footer {
+  max-width: 700px;      /* Restricts line width for readability */
+  margin: 0 auto;        /* Centers the container horizontally */
+  margin-bottom: var(--space-8);
+}
+
+/* Navigation Layout */
+nav {
+  border-bottom: 2px solid var(--color-border);
+  padding-bottom: var(--space-4);
+}
+
+nav a {
+  display: inline-block; /* Allows margins and padding to work perfectly */
+  color: var(--color-muted);
+  text-decoration: none;
+  font-weight: 600;
+  margin-right: var(--space-4);
+}
+
+nav a:hover {
+  color: var(--color-accent);
+}
+
+/* ==========================================================================
+   5. COMPONENTS (Cards, Buttons, Lists)
+   ========================================================================== */
+/* Project Card component for projects.html */
+.project-card {
+  background: #ffffff;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  padding: var(--space-4);
+  margin-bottom: var(--space-4);
+}
+
+/* Buttons and Links styling */
+.btn {
+  display: inline-block;
+  background-color: var(--color-accent);
+  color: #ffffff;
+  padding: var(--space-2) var(--space-4);
+  text-decoration: none;
+  border-radius: 4px;
+  font-weight: 500;
+}
+
+.btn:hover {
+  opacity: 0.9;
+}
+
+/* Contact Form basics */
+form {
+  background: #ffffff;
+  padding: var(--space-4);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+}
+
+label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: var(--space-1);
+}
+
+input, textarea {
+  width: 100%;
+  padding: var(--space-2);
+  margin-bottom: var(--space-4);
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  font-family: inherit;
+}
