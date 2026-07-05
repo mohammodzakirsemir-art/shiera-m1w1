@@ -1,129 +1,108 @@
 /* ==========================================================================
-   1. DESIGN SYSTEM & TOKENS (:root)
-   ========================================================================== */
-:root {
-  /* 5-Color Palette */
-  --color-bg: #faf7ff;
-  --color-fg: #1a0b2e;
-  --color-muted: #6b5b7e;
-  --color-accent: #7c3aed;
-  --color-border: #e5e0ee;
-
-  /* 2 Fonts */
-  --font-sans: "Inter", system-ui, sans-serif;
-  --font-display: "Sora", sans-serif;
-
-  /* 4-Step Spacing Scale */
-  --space-1: 0.25rem;  /* 4px */
-  --space-2: 0.5rem;   /* 8px */
-  --space-4: 1rem;     /* 16px */
-  --space-8: 2rem;     /* 32px */
-}
-
-/* ==========================================================================
-   2. GLOBAL RESETS & BOX MODEL
+   1. CSS RESET & GLOBAL STYLES (Week 3 Standard)
    ========================================================================== */
 *, *::before, *::after {
-  box-sizing: border-box; /* Includes padding/border in width calculation */
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
 body {
-  background-color: var(--color-bg);
-  color: var(--color-fg);
-  font-family: var(--font-sans);
+  font-family: system-ui, -apple-system, sans-serif;
   line-height: 1.6;
-  padding: var(--space-8) var(--space-4);
+  color: #333;
+  background-color: #f9f9f9;
 }
 
-/* ==========================================================================
-   3. TYPE SCALE (Typography)
-   ========================================================================== */
-h1, h2, h3 {
-  font-family: var(--font-display);
-  color: var(--color-fg);
-  margin-bottom: var(--space-4);
-}
-
-h1 { font-size: 2.5rem;   line-height: 1.2; }
-h2 { font-size: 1.75rem;  line-height: 1.3; }
-h3 { font-size: 1.25rem;  line-height: 1.4; }
-p  { font-size: 1rem;      margin-bottom: var(--space-4); }
-
-/* ==========================================================================
-   4. LAYOUT & CONTAINERS (No Flexbox/Grid)
-   ========================================================================== */
-header, main, footer {
-  max-width: 700px;      /* Restricts line width for readability */
-  margin: 0 auto;        /* Centers the container horizontally */
-  margin-bottom: var(--space-8);
-}
-
-/* Navigation Layout */
-nav {
-  border-bottom: 2px solid var(--color-border);
-  padding-bottom: var(--space-4);
-}
-
-nav a {
-  display: inline-block; /* Allows margins and padding to work perfectly */
-  color: var(--color-muted);
+a {
   text-decoration: none;
-  font-weight: 600;
-  margin-right: var(--space-4);
+  color: inherit;
 }
 
-nav a:hover {
-  color: var(--color-accent);
+ul {
+  list-style: none;
+}
+
+/* Base layout container */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
 }
 
 /* ==========================================================================
-   5. COMPONENTS (Cards, Buttons, Lists)
+   2. MOBILE FIRST STYLES (Baseline: 360px Phone layout)
    ========================================================================== */
-/* Project Card component for projects.html */
+
+/* FLEXBOX REQUIREMENT: Navigation Bar */
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.nav__links {
+  display: flex;
+  gap: 1rem; /* Controls spacing between links */
+}
+
+/* GRID REQUIREMENT: Projects Card Layout */
+.projects-gallery {
+  display: grid;
+  /* Intrinsic Grid pattern: Fits your project cards beautifully on any screen */
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+/* Card Styling */
 .project-card {
-  background: #ffffff;
-  border: 1px solid var(--color-border);
+  background: #fff;
   border-radius: 8px;
-  padding: var(--space-4);
-  margin-bottom: var(--space-4);
+  padding: 1.5rem;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
 }
 
-/* Buttons and Links styling */
-.btn {
-  display: inline-block;
-  background-color: var(--color-accent);
-  color: #ffffff;
-  padding: var(--space-2) var(--space-4);
-  text-decoration: none;
-  border-radius: 4px;
-  font-weight: 500;
+/* ==========================================================================
+   3. RESPONSIVE BREAKPOINTS (Mobile-First Media Queries)
+   ========================================================================== */
+
+/* * Tablet Breakpoint (768px and up) */
+@media (min-width: 768px) {
+  .nav {
+    padding: 1rem 2rem;
+  }
+  .container {
+    padding: 3rem 2rem;
+  }
+  
+  /* ADD THIS: Turns navigation into row on tablets */
+  .nav__links {
+    flex-direction: row;
+    justify-content: center;
+    gap: 20px;
+  }
+
+  /* ADD THIS: Updates grid to 2 columns on tablets */
+  .projects-gallery {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
-.btn:hover {
-  opacity: 0.9;
-}
+/* * Desktop Breakpoint (1280px and up) */
+@media (min-width: 1280px) {
+  .nav {
+    padding: 1rem 4rem;
+  }
+  .container {
+    padding: 4rem 0;
+  }
 
-/* Contact Form basics */
-form {
-  background: #ffffff;
-  padding: var(--space-4);
-  border: 1px solid var(--color-border);
-  border-radius: 8px;
-}
-
-label {
-  display: block;
-  font-weight: 600;
-  margin-bottom: var(--space-1);
-}
-
-input, textarea {
-  width: 100%;
-  padding: var(--space-2);
-  margin-bottom: var(--space-4);
-  border: 1px solid var(--color-border);
-  border-radius: 4px;
-  font-family: inherit;
+  /* ADD THIS: Updates grid to 3 columns on desktops */
+  .projects-gallery {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }

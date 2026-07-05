@@ -12,10 +12,12 @@
 
 <h1>My Projects</h1>
 
-<nav>
-<a href="index.html">Home</a> |
-<a href="projects.html">Projects</a> |
-<a href="contact.html">Contact</a>
+<nav class="nav">
+  <div class="nav__links">
+    <a href="index.html">Home</a> |
+    <a href="projects.html">Projects</a> |
+    <a href="contact.html">Contact</a>
+  </div>
 </nav>
 
 </header>
@@ -23,22 +25,24 @@
 <main>
 
 <article>
+    
+    <!-- 1. Open the Grid container right here -->
+    <div class="projects-gallery">
 
-<section>
+      <!-- 2. Add the card class to your first project section -->
+      <section class="project-card">
+        <h2>Project 1</h2>
+        <p>Personal Website using HTML.</p>
+      </section>
 
-<h2>Project 1</h2>
+      <!-- 3. Add the card class to your second project section -->
+      <section class="project-card">
+        <h2>Project 2</h2>
+        <p>Learning Git and GitHub.</p>
+      </section>
 
-<p>Personal Website using HTML.</p>
+    </div><!-- 4. Close the Grid container here -->
 
-</section>
-
-<section>
-
-<h2>Project 2</h2>
-
-<p>Learning Git and GitHub.</p>
-
-</section>
 
 </article>
 
